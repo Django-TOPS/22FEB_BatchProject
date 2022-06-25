@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-lw!j^8h*d!d1-kgy#nqe&0_u$eta-nq-y=3^fkng9!4p1g6#$h'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
@@ -38,6 +38,14 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'myapp',
+
+    # allauth
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',
+    'allauth.socialaccount.providers.facebook',
 ]
 
 MIDDLEWARE = [
@@ -69,6 +77,16 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'BatchProject.wsgi.application'
+
+# allauth
+SITE_ID = 1
+
+
+# allauth
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+]
 
 
 # Database
@@ -138,3 +156,6 @@ EMAIL_USE_TLS = True
 EMAIL_PORT = 587
 EMAIL_HOST_USER = "djangoproj@yahoo.com"
 EMAIL_HOST_PASSWORD = "vnzasbaaebxrluto"
+
+
+LOGIN_REDIRECT_URL="/"
